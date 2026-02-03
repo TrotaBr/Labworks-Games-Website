@@ -93,7 +93,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.54)), url('Library Hero.png') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.54)), url('images/logos/hero_cropped.png') no-repeat right center/cover;
             padding: 0 5%;
             transition: 0.5s;
         }
@@ -169,6 +169,19 @@
             cursor: pointer;
         }
         .btn:hover { transform: scale(1.05); background: #fff; box-shadow: var(--neon-glow); }
+
+        .btn-low {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
 
         /* =========================================
            HYBRID WISHLIST BUTTON (The Magic Part) 
@@ -379,7 +392,7 @@
     <button id="secret-aero-toggle" title="Switch Aesthetics"></button>
 
     <nav>
-        <img src="LOGO.png" alt="Labworks Games" width="175" height="80">
+        <img src="images/logos/LOGO.png" style="flex-shrink: 1;" alt="Labworks Games" width="175" height="80">
         <div class="nav-links">
             <a href="#games">Games</a>
             <a href="#team">Team</a>
@@ -389,7 +402,7 @@
 
     <header class="hero">
         <div class="logo-group">
-            <img src="LOGOVC.png" alt="Labworks Games" style="width: 600px; max-width: 100%; height: auto; display: block; margin-top: 80px;">
+            <img src="images/logos/LOGOVC.png" alt="Labworks Games" style="width: 600px; max-width: 100%; height: auto; display: block; margin-top: 80px;">
             
             <a href="https://store.steampowered.com" class="wishlist-btn type1">
                 <div class="frutiger-inner">
@@ -402,7 +415,7 @@
     </header>
 
 <section id="games" class="game-showcase" style="background: #080808;">
-    <img src="Labworks_Poser.png" alt="Echoes of Ares Gameplay" class="game-image">
+    <img src="images/logos/Labworks_Poser.png" alt="Echoes of Ares Gameplay" class="game-image">
     <div class="game-content">
         <h2>Labworks</h2>
         <p class="game-description">
@@ -416,7 +429,7 @@
 
 
 <section class="game-showcase">
-    <img src="Main Capsule.png" alt="Celestial Drift Gameplay" class="game-image">
+    <img src="images/logos/Main Capsule.png" alt="Celestial Drift Gameplay" class="game-image">
     <div class="game-content">
         <h2>Version Control (The Game)</h2>
         <p class="game-description">
@@ -446,21 +459,21 @@
         <h2>The <span>Labworks Team</span></h2>
         <div class="grid">
             <div class="team-card">
-                <img src="volx.jpg" class="profile-img">
+                <img src="images/team/volx.jpg" class="profile-img">
                 <h3>Volx64</h3>
                 <div class="role">Lead Developer</div>
                 <p class="bio">Lead Developer across all Labworks Games projects. He has been the driving force behind the original Labworks mod and both iterations of the Version Control series.</p>
             </div>
             
             <div class="team-card">
-                <img src="evro.jpg" class="profile-img">
+                <img src="images/team/evro.jpg" class="profile-img">
                 <h3>Evro</h3>
                 <div class="role">Technical Developer</div>
                 <p class="bio">Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control projects.</p>
             </div>
 
             <div class="team-card">
-                <img src="Garebeu.png" class="profile-img">
+                <img src="images/team/Garebeu.png" class="profile-img">
                 <h3>Garebeu</h3>
                 <div class="role">Lead Art Director</div>
                 <p class="bio">Art Director, 3D Modeler, and responsible on the story Version Control (The Game) and Version Control (The Mod).</p>
@@ -468,27 +481,27 @@
             </div>
 
             <div class="team-card">
-                <img src="jerb.jpg" class="profile-img">
+                <img src="images/team/jerb.jpg" class="profile-img">
                 <h3>Jerbinstein</h3>
                 <div class="role">Level Designer</div>
                 <p class="bio">Level Designer and Narrative Developer for Version Control, and was the original voice behind the Developer in the first Version Control mod.</p>
             </div>
 
             <div class="team-card">
-                <img src="segatitan.gif" class="profile-img">
+                <img src="images/team/segatitan.gif" class="profile-img">
                 <h3>SegaTitan</h3>
                 <div class="role">Voice Actor</div>
                 <p class="bio">The primary voice actor for the Version Control game, bringing the Developer character to life for this standalone experience.</p>
             </div>
 
             <div class="team-card">
-                <img src="Pooey.png" class="profile-img">
+                <img src="images/team/Pooey.png" class="profile-img">
                 <h3>KadenZombie8</h3>
                 <div class="role">Composer</div>
                 <p class="bio">Composer and Developer who created the BIMOS Interaction System. Currently crafting the original soundtrack for Version Control.</p>
             </div>
             <div class="team-card">
-                <img src="zax.jpg" class="profile-img">
+                <img src="images/team/zax.jpg" class="profile-img">
                 <h3>Zaxoosh</h3>
                 <div class="role">Community Manager</div>
                 <p class="bio">Community Manager and Developer who helped manage the Labworks community after its release.</p>
