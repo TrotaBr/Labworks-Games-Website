@@ -127,7 +127,7 @@ nav {
 .game-showcase h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--accent-color);
+    color: var(--text-main);
 }
 
 .game-description {
@@ -343,7 +343,7 @@ body.frutiger-mode .frutiger-top-white {
 }
 
 .team-section h2 span {
-    color: var(--accent-color);
+    color: var(--text-main);
     text-shadow: var(--neon-glow);
 }
 
