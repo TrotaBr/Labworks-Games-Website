@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Labworks Games</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      .coming-soon-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        z-index: 1000;
+      }
+    </style>
 </head>
 <body>
+
+    <div class="coming-soon-overlay">Coming Soon</div>
 
     <button id="secret-aero-toggle" title="Switch Aesthetics"></button>
 
@@ -46,13 +64,12 @@
     </div>
 </section>
 
-
 <section class="game-showcase">
     <img src="images/logos/Main Capsule.png" alt="Version Control" class="game-image">
     <div class="game-content">
         <h2>Version Control (The Game)</h2>
         <p class="game-description">
-            The sequel to the award-winning 2024 BONEJAM mod of the same name, Version Control returns with a new storyline set in the same universe, expanding on its experimental physics, narrative focus, and self-aware comedic narration.
+            The sequel to the award-winning 2024 BONEJAM mod of the same name, Version Control returns with a new storyline set in the same universe, expanding on its experimental physics, narrative [...]
         </p>
         <div class="widget-container">
             <iframe src="https://store.steampowered.com/widget/4187070/" frameborder="0" width="646" height="190"></iframe>
@@ -65,7 +82,7 @@
     <div class="game-content">
         <h2>Version Control (The Mod)</h2>
         <p class="game-description">
-           Version Control is a Stanley Parable-inspired short map made for BONEJAM. Filled with multiple jokes and references, Version Control has you playing as a playtester through an unfinished map, being shown along the way by the narrator developer. The less you know the better!
+           Version Control is a Stanley Parable-inspired short map made for BONEJAM. Filled with multiple jokes and references, Version Control has you playing as a playtester through an unfinishe[...]
         </p>
         <a href="https://mod.io/g/bonelab/m/version-control#description" class="btn" style="background-color: #ffffff; width: 120px; align-items: center; justify-content: center; gap: 10px;">
             <img src="https://mod.io/favicon.ico" width="20" alt="mod.io"> Mod.io
@@ -81,14 +98,14 @@
                 <img src="images/team/volx.jpg" class="profile-img">
                 <h3>Volx64</h3>
                 <div class="role">Lead Developer</div>
-                <p class="bio">Lead Developer across all Labworks Games projects. He has been the driving force behind the original Labworks mod and both iterations of the Version Control series.</p>
+                <p class="bio">Lead Developer across all Labworks Games projects. He has been the driving force behind the original Labworks mod and both iterations of the Version Control series.<[...] 
             </div>
             
             <div class="team-card">
                 <img src="images/team/evro.jpg" class="profile-img">
                 <h3>Evro</h3>
                 <div class="role">Technical Developer</div>
-                <p class="bio">Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control projects.</p>
+                <p class="bio">Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control p[...] 
             </div>
 
             <div class="team-card">
@@ -135,7 +152,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
-
-
