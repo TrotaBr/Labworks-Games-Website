@@ -201,7 +201,7 @@ const gameAnimSpeed = 0.05;
 
 let teamCards = [];
 let teamHitboxes = []; 
-let uiHitboxes = []; // <--- ADD THIS
+
 let isTeamVisible = false;
 let activeTeamCard = null; 
 
@@ -460,7 +460,7 @@ function setupGameCases(scene) {
             fontFamily: "'Segoe UI', sans-serif", 
             opacity: '0',
             transition: 'opacity 0.4s ease', 
-            pointerEvents: 'auto'
+            pointerEvents: 'none' // CHANGED: Default to none so they don't block clicks
         });
 
         const labelObject = new CSS3DObject(div);
@@ -475,13 +475,19 @@ function setupGameCases(scene) {
         hitMesh.position.copy(labelObject.position);
         
         cssGroup.add(hitMesh);
-        uiHitboxes.push(hitMesh);
+        // uiHitboxes.push(hitMesh); // REMOVED
 
         sceneCSSFront.add(cssGroup);
 
         gameCases.push({
-            name, mesh: gameMesh, config, originalPos: gameMesh.position.clone(),
-            originalRot: gameMesh.quaternion.clone(), cssGroup, infoCard: div
+            name, 
+            mesh: gameMesh, 
+            config, 
+            originalPos: gameMesh.position.clone(),
+            originalRot: gameMesh.quaternion.clone(), 
+            cssGroup, 
+            infoCard: div,
+            hitbox: hitMesh // ADDED: Store hitbox here
         });
     });
 }
@@ -579,12 +585,15 @@ window.addEventListener('click', (event) => {
         return; 
     }
 
-    if (currentFocusState === 'GAME') {
-        const uiIntersects = raycaster.intersectObjects(uiHitboxes);
+    // --- FIX IS HERE ---
+    // Only check the hitbox of the CURRENT active game case
+    if (currentFocusState === 'GAME' && activeGameCase && activeGameCase.hitbox) {
+        const uiIntersects = raycaster.intersectObject(activeGameCase.hitbox);
         if (uiIntersects.length > 0) {
-            return;
+            return; // Hit the invisible wall, let HTML button handle it
         }
     }
+    // -------------------
 
     const intersects = raycaster.intersectObjects(scene.children, true);
     
@@ -998,8 +1007,10 @@ function moveToTarget(targetKey, specificGameData = null) {
     gameCases.forEach(gc => {
         if (activeGameCase && gc.name === activeGameCase.name && targetKey === 'GAME') {
             gc.infoCard.style.opacity = '1';
+            gc.infoCard.style.pointerEvents = 'auto'; // CHANGED: Enable clicks only for active card
         } else {
             gc.infoCard.style.opacity = '0';
+            gc.infoCard.style.pointerEvents = 'none'; // CHANGED: Disable clicks for background cards
         }
     });
 
