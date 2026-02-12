@@ -201,6 +201,7 @@ const gameAnimSpeed = 0.05;
 
 let teamCards = [];
 let teamHitboxes = []; 
+let uiHitboxes = []; // <--- ADD THIS
 let isTeamVisible = false;
 let activeTeamCard = null; 
 
@@ -414,6 +415,12 @@ function setupTVScreen(scene) {
 }
 
 function setupGameCases(scene) {
+    const cardHitboxGeo = new THREE.PlaneGeometry(430, 600);
+    const cardHitboxMat = new THREE.MeshBasicMaterial({ 
+        visible: false, 
+        side: THREE.DoubleSide 
+    });
+
     Object.keys(GAME_CONFIG).forEach(name => {
         const gameMesh = scene.getObjectByName(name);
         if (!gameMesh) return;
@@ -424,44 +431,52 @@ function setupGameCases(scene) {
         div.style.willChange = 'transform, opacity';
 
         div.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                        <h1 style="margin: 0; font-size: 1.8em; text-transform: uppercase; letter-spacing: 2px;">${config.title}</h1>
-                    </div>
-                    <h3 style="margin: 5px 0 15px 0; font-weight: 300; color: #aaa; font-size: 0.9em;">${config.subtitle}</h3>
-                    <p style="line-height: 1.5; color: #ddd; font-size: 0.85em; margin-bottom: 15px;">${config.desc}</p>
-                    <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;" />
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.8em; margin-bottom: 20px;">
-                        <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">GENRE</strong><br/>${config.genre}</div>
-                        <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">RELEASE</strong><br/>${config.release}</div>
-                    </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <h1 style="margin: 0; font-size: 1.8em; text-transform: uppercase; letter-spacing: 2px;">${config.title}</h1>
+            </div>
+            <h3 style="margin: 5px 0 15px 0; font-weight: 300; color: #aaa; font-size: 0.9em;">${config.subtitle}</h3>
+            <p style="line-height: 1.5; color: #ddd; font-size: 0.85em; margin-bottom: 15px;">${config.desc}</p>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;" />
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.8em; margin-bottom: 20px;">
+                <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">GENRE</strong><br/>${config.genre}</div>
+                <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">RELEASE</strong><br/>${config.release}</div>
+            </div>
 
-                    <button onclick="window.open('${config.storeUrl}', '_blank')" 
-                        style="width: 100%; padding: 12px; background: #fff; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; pointer-events: auto; transition: transform 0.1s active;">
-                        VIEW ON STORE
-                    </button>
-                `;
+            <button onclick="event.stopPropagation(); window.open('${config.storeUrl}', '_blank')" 
+                style="width: 100%; padding: 12px; background: #fff; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; pointer-events: auto; transition: transform 0.1s active;">
+                VIEW ON STORE
+            </button>
+        `;
 
-                // --- UPDATED STYLES (Notice pointerEvents is now 'auto') ---
-                Object.assign(div.style, {
-                    width: '380px', 
-                    padding: '25px', 
-                    color: 'white', 
-                    background: 'rgba(15, 15, 15, 0.98)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)', 
-                    borderLeft: '4px solid #fff',
-                    borderRadius: '4px', 
-                    fontFamily: "'Segoe UI', sans-serif", 
-                    opacity: '0',
-                    transition: 'opacity 0.4s ease', 
-                    pointerEvents: 'auto' // Important!
-                });
+        Object.assign(div.style, {
+            width: '380px', 
+            padding: '25px', 
+            color: 'white', 
+            background: 'rgba(15, 15, 15, 0.98)',
+            border: '1px solid rgba(255, 255, 255, 0.1)', 
+            borderLeft: '4px solid #fff',
+            borderRadius: '4px', 
+            fontFamily: "'Segoe UI', sans-serif", 
+            opacity: '0',
+            transition: 'opacity 0.4s ease', 
+            pointerEvents: 'auto'
+        });
 
         const labelObject = new CSS3DObject(div);
         labelObject.scale.set(0.0005, 0.0005, 0.0005);
         labelObject.position.set(0.35, 0, 0);
+        
         const cssGroup = new THREE.Group();
         cssGroup.add(labelObject);
+
+        const hitMesh = new THREE.Mesh(cardHitboxGeo, cardHitboxMat);
+        hitMesh.scale.set(0.0005, 0.0005, 0.0005);
+        hitMesh.position.copy(labelObject.position);
+        
+        cssGroup.add(hitMesh);
+        uiHitboxes.push(hitMesh);
+
         sceneCSSFront.add(cssGroup);
 
         gameCases.push({
@@ -541,26 +556,20 @@ window.addEventListener('click', (event) => {
 
     raycaster.setFromCamera(mouse, camera);
 
-
     if (isTeamVisible) {
-
         const teamIntersects = raycaster.intersectObjects(teamHitboxes);
 
         if (teamIntersects.length > 0) {
             const hit = teamIntersects[0].object;
             const index = hit.userData.id;
             
-
             if (activeTeamCard === teamCards[index]) {
                 activeTeamCard.userData.isFlipped = !activeTeamCard.userData.isFlipped;
-            } 
-
-            else {
+            } else {
                 if (activeTeamCard) closeTeamInspection();
                 onTeamCardClick(index);
             }
         } else {
-
             if (activeTeamCard) {
                 closeTeamInspection();
             } else {
@@ -570,9 +579,15 @@ window.addEventListener('click', (event) => {
         return; 
     }
 
+    if (currentFocusState === 'GAME') {
+        const uiIntersects = raycaster.intersectObjects(uiHitboxes);
+        if (uiIntersects.length > 0) {
+            return;
+        }
+    }
+
     const intersects = raycaster.intersectObjects(scene.children, true);
     
-
     const handleClickAway = () => {
         if (currentFocusState === 'GAME') {
             moveToTarget('SHELF');
@@ -587,9 +602,8 @@ window.addEventListener('click', (event) => {
         let foundGameCaseData = null;
 
         while (obj) {
-
             if (obj.name === "Pooey") {
-            playPooeySound();
+                playPooeySound();
             }
 
             if (obj.name === TEAM_MESH_NAME) {
@@ -597,7 +611,6 @@ window.addEventListener('click', (event) => {
                 return;
             }
             
-
             if (obj.name === TARGETS.TV.name) {
                 foundTarget = 'TV';
             }
