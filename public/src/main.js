@@ -580,7 +580,7 @@ window.addEventListener('click', (event) => {
 
         while (obj) {
 
-            if (obj.name === "pooey") {
+            if (obj.name === "Pooey") {
             playPooeySound();
             }
 
