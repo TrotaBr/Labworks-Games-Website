@@ -424,30 +424,38 @@ function setupGameCases(scene) {
         div.style.willChange = 'transform, opacity';
 
         div.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                <h1 style="margin: 0; font-size: 1.8em; text-transform: uppercase; letter-spacing: 2px;">${config.title}</h1>
-            </div>
-            <h3 style="margin: 5px 0 15px 0; font-weight: 300; color: #aaa; font-size: 0.9em;">${config.subtitle}</h3>
-            <p style="line-height: 1.5; color: #ddd; font-size: 0.85em; margin-bottom: 15px;">${config.desc}</p>
-            <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;" />
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.8em; margin-bottom: 15px;">
-                <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">GENRE</strong><br/>${config.genre}</div>
-                <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">RELEASE</strong><br/>${config.release}</div>
-                <div style="grid-column: span 2;"><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">PLATFORM</strong><br/>${config.platform}</div>
-            </div>
-            <div style="text-align: center; margin-top: 10px; padding: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; border: 1px dashed rgba(255,255,255,0.2);">
-                <span style="color: #fff; font-size: 0.75em; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">
-                    Click on the game again to go to the store page
-                </span>
-            </div>
-        `;
+                    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                        <h1 style="margin: 0; font-size: 1.8em; text-transform: uppercase; letter-spacing: 2px;">${config.title}</h1>
+                    </div>
+                    <h3 style="margin: 5px 0 15px 0; font-weight: 300; color: #aaa; font-size: 0.9em;">${config.subtitle}</h3>
+                    <p style="line-height: 1.5; color: #ddd; font-size: 0.85em; margin-bottom: 15px;">${config.desc}</p>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;" />
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.8em; margin-bottom: 20px;">
+                        <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">GENRE</strong><br/>${config.genre}</div>
+                        <div><strong style="color: #888; font-size: 0.7em; text-transform: uppercase;">RELEASE</strong><br/>${config.release}</div>
+                    </div>
 
-        Object.assign(div.style, {
-            width: '380px', padding: '25px', color: 'white', background: 'rgba(15, 15, 15, 0.98)',
-            border: '1px solid rgba(255, 255, 255, 0.1)', borderLeft: '4px solid #fff',
-            borderRadius: '4px', fontFamily: "'Segoe UI', sans-serif", opacity: '0',
-            transition: 'opacity 0.4s ease', pointerEvents: 'none'
-        });
+                    <button onclick="window.open('${config.storeUrl}', '_blank')" 
+                        style="width: 100%; padding: 12px; background: #fff; color: #000; border: none; border-radius: 4px; font-weight: bold; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; pointer-events: auto; transition: transform 0.1s active;">
+                        VIEW ON STORE
+                    </button>
+                `;
+
+                // --- UPDATED STYLES (Notice pointerEvents is now 'auto') ---
+                Object.assign(div.style, {
+                    width: '380px', 
+                    padding: '25px', 
+                    color: 'white', 
+                    background: 'rgba(15, 15, 15, 0.98)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)', 
+                    borderLeft: '4px solid #fff',
+                    borderRadius: '4px', 
+                    fontFamily: "'Segoe UI', sans-serif", 
+                    opacity: '0',
+                    transition: 'opacity 0.4s ease', 
+                    pointerEvents: 'auto' // Important!
+                });
 
         const labelObject = new CSS3DObject(div);
         labelObject.scale.set(0.0005, 0.0005, 0.0005);
