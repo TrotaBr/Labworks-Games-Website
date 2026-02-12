@@ -230,9 +230,9 @@ async function initAudio() {
         return await audioContext.decodeAudioData(arrayBuffer)
     }
     try {
-        clickBuffer = await loadSound('public/sounds/click.mp3')
-        musicBuffer = await loadSound('public/sounds/music.mp3')
-        ambienceBuffer = await loadSound('public/sounds/ambience.mp3')
+        clickBuffer = await loadSound('/sounds/click.mp3')
+        musicBuffer = await loadSound('/sounds/music.mp3')
+        ambienceBuffer = await loadSound('/sounds/ambience.mp3')
         musicGain = audioContext.createGain()
         ambienceGain = audioContext.createGain()
         musicGain.gain.value = MUSIC_VOLUME
