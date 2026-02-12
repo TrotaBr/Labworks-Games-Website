@@ -209,7 +209,7 @@ const tempVec = new THREE.Vector3();
 const tempQuat = new THREE.Quaternion();
 const tempScale = new THREE.Vector3();
 
-let audioContext, clickBuffer, musicBuffer, ambienceBuffer
+let audioContext, clickBuffer, musicBuffer, ambienceBuffer, pooeyHappyBuffer;
 let musicSource, ambienceSource, musicGain, ambienceGain
 let audioInitialized = false
 const MUSIC_VOLUME = .6
@@ -224,15 +224,22 @@ let isMutedByFocus = false
 async function initAudio() {
     if (audioInitialized) return
     audioContext = new (window.AudioContext || window.webkitAudioContext)()
+    
     async function loadSound(path) {
         const response = await fetch(path)
         const arrayBuffer = await response.arrayBuffer()
         return await audioContext.decodeAudioData(arrayBuffer)
     }
+
     try {
         clickBuffer = await loadSound('/sounds/click.mp3')
         musicBuffer = await loadSound('/sounds/music.mp3')
         ambienceBuffer = await loadSound('/sounds/ambience.mp3')
+        
+        // --- ADD THIS LINE ---
+        pooeyHappyBuffer = await loadSound('/sounds/PooeyHappy.mp3') 
+        // ---------------------
+
         musicGain = audioContext.createGain()
         ambienceGain = audioContext.createGain()
         musicGain.gain.value = MUSIC_VOLUME
