@@ -35,13 +35,13 @@ const TEAM_GRID_CONFIG = {
 
 
 const TEAM_MEMBERS = [
-    { name: "Volx64", role: "Lead Developer", desc: "Lead Developer across all Labworks Games projects. He has been the driving force behind the original Labworks mod and both iterations of the Version Control series.", img: "public/images/team/volx.jpg" },
-    { name: "Evro", role: "Technical Developer", desc: "Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control projects.", img: "public/images/team/evro.jpg" },
-    { name: "Garebeu", role: "Lead Art Director", desc: "Art Director, 3D Modeler, and responsible on the story Version Control (The Game) and Version Control (The Mod). Also made this website 👍", img: "public/images/team/Garebeu.png" },
-    { name: "Jerbinstein", role: "Level Designer", desc: "Level Designer and Narrative Developer for Version Control (The Game), and was the original voice behind the Developer in the first Version Control mod.", img: "public/images/team/jerb.jpg" },
-    { name: "SegaTitan", role: "Voice Actor", desc: "The primary voice actor for the Version Control game, bringing the Developer character to life for this standalone experience.", img: "public/images/team/segatitan.gif" },
-    { name: "KadenZombie8", role: "Composer", desc: "Composer and Developer who created the BIMOS Interaction System. Currently crafting the original soundtrack for Version Control.", img: "public/images/team/Pooey.png" },
-    { name: "Zaxoosh", role: "Community Manager", desc: "Community Manager and Developer who helped manage the Labworks community after its release.", img: "public/images/team/zax.jpg" }
+    { name: "Volx64", role: "Lead Developer", desc: "Lead Developer across all Labworks Games projects. He has been the driving force behind the original Labworks mod and both iterations of the Version Control series.", img: "/images/team/volx.jpg" },
+    { name: "Evro", role: "Technical Developer", desc: "Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control projects.", img: "/images/team/evro.jpg" },
+    { name: "Garebeu", role: "Lead Art Director", desc: "Art Director, 3D Modeler, and responsible on the story Version Control (The Game) and Version Control (The Mod). Also made this website 👍", img: "/images/team/Garebeu.png" },
+    { name: "Jerbinstein", role: "Level Designer", desc: "Level Designer and Narrative Developer for Version Control (The Game), and was the original voice behind the Developer in the first Version Control mod.", img: "/images/team/jerb.jpg" },
+    { name: "SegaTitan", role: "Voice Actor", desc: "The primary voice actor for the Version Control game, bringing the Developer character to life for this standalone experience.", img: "/images/team/segatitan.gif" },
+    { name: "KadenZombie8", role: "Composer", desc: "Composer and Developer who created the BIMOS Interaction System. Currently crafting the original soundtrack for Version Control.", img: "/images/team/Pooey.png" },
+    { name: "Zaxoosh", role: "Community Manager", desc: "Community Manager and Developer who helped manage the Labworks community after its release.", img: "/images/team/zax.jpg" }
 ];
 
 const GAME_CONFIG = {
@@ -387,7 +387,7 @@ function setupTVScreen(scene) {
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = '0px';
-    iframe.src = 'public/html/tv_interface.html';
+    iframe.src = '/html/tv_interface.html';
     div.appendChild(iframe);
 
     const cssObject = new CSS3DObject(div);
@@ -818,8 +818,8 @@ function injectHoloStyles() {
             --clip-borders: inset(2.8% 4% round 2.55% / 1.5%);
             --clip: inset( 9.85% 8% 52.85% 8% );
             --card-glow: hsla(0, 100%, 100%, 0.5);
-            --foil: url("public/images/grain.webp"); 
-            --glitter: url("public/images/glitter.png");
+            --foil: url("/images/grain.webp"); 
+            --glitter: url("/images/glitter.png");
         }
 
        
