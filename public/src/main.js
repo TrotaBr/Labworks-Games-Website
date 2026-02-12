@@ -236,10 +236,7 @@ async function initAudio() {
         musicBuffer = await loadSound('/sounds/music.mp3')
         ambienceBuffer = await loadSound('/sounds/ambience.mp3')
         
-        // --- ADD THIS LINE ---
         pooeyHappyBuffer = await loadSound('/sounds/PooeyHappy.mp3') 
-        // ---------------------
-
         musicGain = audioContext.createGain()
         ambienceGain = audioContext.createGain()
         musicGain.gain.value = MUSIC_VOLUME
@@ -262,6 +259,14 @@ function startLoops() {
     ambienceSource.connect(ambienceGain)
     musicSource.start()
     ambienceSource.start()
+}
+
+function playPooeySound() {
+    if (!audioInitialized || !pooeyHappyBuffer) return
+    const source = audioContext.createBufferSource()
+    source.buffer = pooeyHappyBuffer
+    source.connect(audioContext.destination)
+    source.start()
 }
 
 function playClickSound() {
@@ -558,6 +563,7 @@ window.addEventListener('click', (event) => {
     }
 
     const intersects = raycaster.intersectObjects(scene.children, true);
+    
 
     const handleClickAway = () => {
         if (currentFocusState === 'GAME') {
@@ -573,10 +579,16 @@ window.addEventListener('click', (event) => {
         let foundGameCaseData = null;
 
         while (obj) {
+
+            if (obj.name === "pooey") {
+            playPooeySound();
+            }
+
             if (obj.name === TEAM_MESH_NAME) {
                 toggleTeamCards();
                 return;
             }
+            
 
             if (obj.name === TARGETS.TV.name) {
                 foundTarget = 'TV';
@@ -992,7 +1004,7 @@ function setupFlipInstruction() {
     Object.assign(div.style, {
         position: 'fixed',
         top: '50%',
-        left: '15%', // CHANGED: 'right' to 'left'
+        left: '15%',
         transform: 'translateY(-50%)',
         textAlign: 'center',
         color: 'rgba(255, 255, 255, 0.6)',
