@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Labworks Games</title>
+
+
+	<style>
+		body { margin: 0; }
+	</style>
+
+
+	<script type="importmap">
+    {
+        "imports": {
+            "three": "./node_modules/three/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+  <script type="module" crossorigin src="/assets/index-BxeUvQW6.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-ifEGaJfA.css">
+</head>
+<script>
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+</script>
+<body>
+
+
+	<div id="loading-screen">
+		<div class="loader-content">
+			<img src="/assets/LOGO-D4zutpEf.png" width="140" draggable="false">
+			
+			<div class="loading-bar">
+				<div class="loading-progress" id="loading-progress"></div>
+			</div>
+
+			<div class="loading-text" id="loading-text">
+				LOADING 0%
+			</div>
+		</div>
+	</div>
+
+
+	<canvas id="background"></canvas>
+
+
+	<div class="title">
+		<img src="/assets/LOGO-D4zutpEf.png"
+			width="200"
+			draggable="false">
+	</div>
+	<button id="audio-toggle" class="audio-btn">
+    <svg id="speaker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+</button>
+
+
+	<div class="crt"></div>
+
+</body>
+</html>
