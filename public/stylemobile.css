@@ -1,0 +1,457 @@
+:root {
+    --primary-bg: #0b0b0b;
+    --secondary-bg: rgba(26, 26, 25, 0.8);
+    --accent-color: #848484;
+    /* Default Gray/Silver */
+    --text-main: #ffffff;
+    --text-dim: #a0a0a0;
+    --neon-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+    --btn-accent: #00d4ff;
+    /* Specific for the neon button */
+}
+
+/* --- FRUTIGER AERO MODE OVERRIDES --- */
+body.frutiger-mode {
+    --primary-bg: #520e0e;
+    --secondary-bg: rgba(255, 255, 255, 0.5);
+    --accent-color: #b2e7f7;
+    --text-main: #37a0c4;
+    --text-dim: #2c5e6e;
+    --neon-glow: 0 5px 15px rgba(0, 157, 205, 0.3);
+
+    /* The Vista/Aero Background */
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(144, 238, 144, 0.4) 0%, transparent 40%),
+        linear-gradient(135deg, #081542cc 0%, #44b2c6 100%) fixed;
+}
+
+body.frutiger-mode .game-showcase {
+    background-image: url("background.png") !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    color: #004b63;
+}
+
+body.frutiger-mode .team-section {
+    background-image: url("background.png") !important;
+}
+
+body.frutiger-mode .team-card {
+    background-image: url("background2.jpg") !important;
+    border: 2px solid #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+}
+
+body.frutiger-mode .profile-img {
+    border-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- STANDARD STYLES --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    transition: all 0.8s ease;
+    /* Smooth transition between modes */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    position: fixed;
+    width: 90%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--btn-accent);
+    text-shadow: var(--neon-glow);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.54)), url('images/logos/hero_cropped.png') no-repeat right center/cover;
+    padding: 0 5%;
+    transition: 0.5s;
+}
+
+/* Game Showcase Sections */
+.game-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 100px 5%;
+    background: #0d0d0d;
+    border-bottom: 1px solid #1a1a1a;
+    gap: 50px;
+    transition: 0.5s;
+}
+
+.game-content {
+    flex: 1;
+}
+
+.game-image {
+    flex: 1;
+    border-radius: 15px;
+    box-shadow: var(--neon-glow);
+    border: 1px solid var(--accent-color);
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.game-showcase h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.game-description {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+}
+
+.widget-container {
+    background: #00000000;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 190px;
+}
+
+@media (max-width: 900px) {
+    .game-showcase {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.logo-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
+
+.btn {
+    background: var(--accent-color);
+    color: black;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #fff;
+    box-shadow: var(--neon-glow);
+}
+
+.btn-low {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+
+.wishlist-btn {
+    height: 50px;
+    width: 200px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid var(--btn-accent);
+    overflow: hidden;
+    border-radius: 30px;
+    color: var(--text-main);
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 25px;
+}
+
+.btn-txt {
+    z-index: 2;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+/* DEFAULT (Dark Mode) Animation: The Expanding Dot */
+.type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: var(--btn-accent);
+    border-radius: 30px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: 0;
+}
+
+/* Default Hover State */
+.wishlist-btn:hover {
+    box-shadow: 0 0 30px var(--btn-accent);
+    color: #ffffff;
+    border: 2px solid var(--btn-accent);
+}
+
+/* Only apply the expanding dot animation if NOT in frutiger mode */
+body:not(.frutiger-mode) .type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+}
+
+.frutiger-inner {
+    display: none;
+}
+
+/* When Frutiger Mode is Active */
+body.frutiger-mode .wishlist-btn {
+    border: 0;
+    /* Remove neon border */
+    background: linear-gradient(#006caa, #00c3ff);
+    box-shadow: 0px 4px 6px 0px #0008;
+    padding: 2px;
+    /* For the border effect */
+    height: auto;
+    min-height: 50px;
+    border-radius: 6px;
+}
+
+body.frutiger-mode .wishlist-btn:hover {
+    box-shadow: 0px 6px 12px 0px #0009;
+    transform: scale(1.02);
+    color: white;
+    /* Force white text */
+}
+
+body.frutiger-mode .type1::after {
+    display: none;
+}
+
+/* Kill the dot animation */
+
+/* Show the inner gloss structure */
+body.frutiger-mode .frutiger-inner {
+    display: block;
+    position: absolute;
+    inset: 2px;
+    /* Margin for the border */
+    border-radius: 4px;
+    background: radial-gradient(circle at 50% 100%, #30f8f8 10%, #30f8f800 55%),
+        linear-gradient(#00526a, #009dcd);
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* The Sweeping Light Animation */
+body.frutiger-mode .frutiger-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-65deg, #0000 40%, #fff7 50%, #0000 70%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: thing 3s ease infinite;
+}
+
+@keyframes thing {
+    0% {
+        background-position: 130%;
+        opacity: 1;
+    }
+
+    to {
+        background-position: -166%;
+        opacity: 0;
+    }
+}
+
+/* The Top Shine Reflection */
+body.frutiger-mode .frutiger-top-white {
+    position: absolute;
+    border-radius: inherit;
+    inset: 0 -8em;
+    background: radial-gradient(circle at 50% -270%, #fff 45%, #fff6 60%, #fff0 60%);
+    z-index: 2;
+}
+
+
+/* Team Section */
+.team-section {
+    padding: 100px 5%;
+    text-align: center;
+    background: #080808;
+}
+
+.team-section h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.team-section h2 span {
+    color: var(--text-main);
+    text-shadow: var(--neon-glow);
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    flex: 1 1 300px;
+    max-width: 380px;
+    background: var(--secondary-bg);
+    padding: 40px 20px;
+    border-radius: 20px;
+    border: 1px solid #222;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transition: 0.4s;
+}
+
+.team-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.team-card:hover::before {
+    transform: scaleX(1);
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 4px solid #333;
+    transition: 0.4s;
+}
+
+.team-card:hover .profile-img {
+    border-color: var(--accent-color);
+    box-shadow: var(--neon-glow);
+}
+
+.team-card h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.role {
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.bio {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    border-top: 1px solid #1a1a1a;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+#secret-aero-toggle {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 9999;
+    border: none;
+    transition: 0.3s;
+}
+
+#secret-aero-toggle:hover {
+    background: #00d4ff;
+    box-shadow: 0 0 10px #00d4ff;
+}

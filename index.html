@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Labworks Games</title>
+    <meta charset="utf-8">
+    <title>Labworks Games</title>
 
-	<link rel="stylesheet" type="text/css" href="/public/src/style.css">
+    <script>
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            window.location.href = "/mobile.html";
+        }
+    </script>
 
-	<style>
-		body { margin: 0; }
-	</style>
+    <link rel="stylesheet" type="text/css" href="/public/src/style.css">
 
-	<script type="importmap">
+    <style>
+        body { margin: 0; }
+    </style>
+
+    <script type="importmap">
     {
         "imports": {
             "three": "./node_modules/three/build/three.module.js",
@@ -18,47 +24,48 @@
         }
     }
     </script>
+
+    <script>
+      document.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+      });
+    </script>
 </head>
-<script>
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
-</script>
 <body>
 
+    <div id="loading-screen">
+        <div class="loader-content">
+            <img src="public/images/logos/LOGO.png" width="140" draggable="false">
+            
+            <div class="loading-bar">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
 
-	<div id="loading-screen">
-		<div class="loader-content">
-			<img src="public/images/logos/LOGO.png" width="140" draggable="false">
-			
-			<div class="loading-bar">
-				<div class="loading-progress" id="loading-progress"></div>
-			</div>
-
-			<div class="loading-text" id="loading-text">
-				LOADING 0%
-			</div>
-		</div>
-	</div>
-
-
-	<canvas id="background"></canvas>
+            <div class="loading-text" id="loading-text">
+                LOADING 0%
+            </div>
+        </div>
+    </div>
 
 
-	<div class="title">
-		<img src="public/images/logos/LOGO.png"
-			width="200"
-			draggable="false">
-	</div>
-	<button id="audio-toggle" class="audio-btn">
+    <canvas id="background"></canvas>
+
+
+    <div class="title">
+        <img src="public/images/logos/LOGO.png"
+            width="200"
+            draggable="false">
+    </div>
+    
+    <button id="audio-toggle" class="audio-btn">
     <svg id="speaker-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
     </svg>
-</button>
+    </button>
 
-	<script type="module" src="/public/src/main.js"></script>
+    <script type="module" src="/public/src/main.js"></script>
 
-	<div class="crt"></div>
+    <div class="crt"></div>
 
 </body>
 </html>
