@@ -1,0 +1,852 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Core Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Dark Theme Palette */
+  --color-background-primary: #0d0d0f; /* Deep dark background */
+  --color-background-secondary: #161619; /* Slightly lighter for inputs/cards */
+  
+  --color-text-primary: #f4f4f5; /* High contrast text */
+  --color-text-secondary: #a1a1aa; /* Muted text for labels/hints */
+  --color-text-tertiary: #71717a; /* Very muted text */
+  
+  --color-border-primary: #f4f4f5; /* Active/Focus borders */
+  --color-border-secondary: #3f3f46; /* Standard borders */
+  --color-border-tertiary: #27272a; /* Subtle dividers */
+
+  /* Warning / Alert Colors */
+  --color-background-warning: #2e2411; 
+  --color-border-warning: #856114;
+  --color-text-warning: #eab308;
+}
+
+/* Global Reset & Body Styling */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Form Structure */
+.qs-root { 
+  font-family: 'Syne', var(--font-sans); 
+  padding: 2rem 20px 3rem; /* Added horizontal padding for mobile */
+  max-width: 680px; 
+  margin: 0 auto; 
+}
+
+.qs-header { 
+  border-bottom: 1.5px solid var(--color-border-primary); 
+  padding-bottom: 1.25rem; 
+  margin-bottom: 2rem; 
+}
+
+.qs-badge { 
+  display: inline-block; 
+  font-family: 'DM Mono', monospace; 
+  font-size: 10px; 
+  letter-spacing: 0.1em; 
+  text-transform: uppercase; 
+  color: var(--color-text-secondary); 
+  border: 0.5px solid var(--color-border-secondary); 
+  padding: 3px 8px; 
+  border-radius: 2px; 
+  margin-bottom: 0.75rem; 
+}
+
+.qs-title { 
+  font-size: 26px; 
+  font-weight: 700; 
+  color: var(--color-text-primary); 
+  letter-spacing: -0.03em; 
+  line-height: 1.2; 
+  margin-bottom: 0.4rem; 
+}
+
+.qs-subtitle { 
+  font-size: 13px; 
+  color: var(--color-text-secondary); 
+  line-height: 1.6; 
+}
+
+.qs-section { 
+  margin-bottom: 2rem; 
+}
+
+.qs-section-title { 
+  font-size: 11px; 
+  font-weight: 500; 
+  letter-spacing: 0.12em; 
+  text-transform: uppercase; 
+  color: var(--color-text-secondary); 
+  font-family: 'DM Mono', monospace; 
+  margin-bottom: 1rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.qs-section-title::after { 
+  content: ''; 
+  flex: 1; 
+  height: 0.5px; 
+  background: var(--color-border-tertiary); 
+}
+
+.qs-question { 
+  margin-bottom: 1.25rem; 
+}
+
+.qs-label { 
+  display: block; 
+  font-size: 14px; 
+  font-weight: 500; 
+  color: var(--color-text-primary); 
+  margin-bottom: 0.5rem; 
+  line-height: 1.4; 
+}
+
+.qs-hint { 
+  font-size: 12px; 
+  color: var(--color-text-tertiary); 
+  margin-bottom: 0.5rem; 
+  display: block; 
+}
+
+/* Inputs & Textareas */
+textarea, input[type="text"] { 
+  width: 100%; 
+  background: var(--color-background-secondary); 
+  border: 0.5px solid var(--color-border-tertiary); 
+  border-radius: 6px; 
+  padding: 10px 12px; 
+  font-family: 'Syne', var(--font-sans); 
+  font-size: 14px; 
+  color: var(--color-text-primary); 
+  resize: vertical; 
+  transition: border-color 0.15s; 
+  outline: none; 
+}
+
+textarea:focus, input[type="text"]:focus { 
+  border-color: var(--color-border-primary); 
+}
+
+textarea { min-height: 80px; }
+textarea.sm { min-height: 60px; }
+textarea.lg { min-height: 110px; }
+
+/* Rating Scale */
+.rating-group { 
+  display: flex; 
+  gap: 6px; 
+}
+
+.rating-group label { 
+  flex: 1; 
+  text-align: center; 
+  cursor: pointer; 
+}
+
+.rating-group input[type="radio"] { 
+  display: none; 
+}
+
+.rating-group .rb { 
+  display: block; 
+  padding: 8px 4px; 
+  border: 0.5px solid var(--color-border-tertiary); 
+  border-radius: 5px; 
+  font-size: 13px; 
+  font-weight: 500; 
+  color: var(--color-text-secondary); 
+  background: var(--color-background-secondary); 
+  transition: all 0.1s; 
+  font-family: 'DM Mono', monospace; 
+}
+
+.rating-group input:checked + .rb { 
+  background: var(--color-text-primary); 
+  color: var(--color-background-primary); 
+  border-color: var(--color-text-primary); 
+}
+
+.rating-group label:hover .rb { 
+  border-color: var(--color-border-primary); 
+  color: var(--color-text-primary); 
+}
+
+.rating-labels { 
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 4px; 
+  font-size: 10px; 
+  color: var(--color-text-tertiary); 
+  font-family: 'DM Mono', monospace; 
+}
+
+/* Checkboxes */
+.checkbox-group { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 6px; 
+}
+
+.checkbox-group label { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: 13px; 
+  color: var(--color-text-primary); 
+  cursor: pointer; 
+  padding: 8px 10px; 
+  border: 0.5px solid var(--color-border-tertiary); 
+  border-radius: 5px; 
+  background: var(--color-background-secondary); 
+  transition: border-color 0.1s; 
+}
+
+.checkbox-group label:hover { 
+  border-color: var(--color-border-primary); 
+}
+
+.checkbox-group input[type="checkbox"] { 
+  accent-color: var(--color-text-primary); 
+  width: 14px; 
+  height: 14px; 
+  flex-shrink: 0; 
+}
+
+/* Select Pills (Radio Alternatives) */
+.select-pill-group { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 6px; 
+}
+
+.select-pill-group input[type="radio"] { 
+  display: none; 
+}
+
+.select-pill-group label { 
+  cursor: pointer; 
+  padding: 6px 14px; 
+  border: 0.5px solid var(--color-border-tertiary); 
+  border-radius: 20px; 
+  font-size: 13px; 
+  color: var(--color-text-secondary); 
+  background: var(--color-background-secondary); 
+  transition: all 0.1s; 
+  font-family: 'DM Mono', monospace; 
+}
+
+.select-pill-group input:checked + label { 
+  background: var(--color-text-primary); 
+  color: var(--color-background-primary); 
+  border-color: var(--color-text-primary); 
+}
+
+.select-pill-group label:hover { 
+  border-color: var(--color-border-primary); 
+  color: var(--color-text-primary); 
+}
+
+/* Utility Elements */
+.qs-divider { 
+  height: 0.5px; 
+  background: var(--color-border-tertiary); 
+  margin: 1.75rem 0; 
+}
+
+.comfort-alert { 
+  background: var(--color-background-warning); 
+  border: 0.5px solid var(--color-border-warning); 
+  border-radius: 6px; 
+  padding: 10px 14px; 
+  font-size: 13px; 
+  color: var(--color-text-warning); 
+  margin-bottom: 1.25rem; 
+  font-family: 'DM Mono', monospace; 
+}
+
+/* Progress Bar */
+.progress-bar-wrap { 
+  height: 3px; 
+  background: var(--color-border-tertiary); 
+  border-radius: 2px; 
+  margin-top: 1rem; 
+}
+
+.progress-bar { 
+  height: 3px; 
+  background: var(--color-text-primary); 
+  border-radius: 2px; 
+  width: 0%; 
+  transition: width 0.3s; 
+}
+
+/* Buttons */
+.qs-actions { 
+  display: flex; 
+  gap: 10px; 
+  margin-top: 2rem; 
+  flex-wrap: wrap; 
+}
+
+.btn-primary { 
+  padding: 11px 20px; 
+  background: var(--color-text-primary); 
+  color: var(--color-background-primary); 
+  border: none; 
+  border-radius: 6px; 
+  font-family: 'Syne', var(--font-sans); 
+  font-size: 14px; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: opacity 0.15s; 
+}
+
+.btn-primary:hover { 
+  opacity: 0.85; 
+}
+
+.btn-secondary { 
+  padding: 11px 20px; 
+  background: transparent; 
+  color: var(--color-text-primary); 
+  border: 0.5px solid var(--color-border-secondary); 
+  border-radius: 6px; 
+  font-family: 'Syne', var(--font-sans); 
+  font-size: 14px; 
+  font-weight: 500; 
+  cursor: pointer; 
+  transition: background 0.1s; 
+}
+
+.btn-secondary:hover { 
+  background: var(--color-background-secondary); 
+}
+
+/* Output Summary Section */
+.qs-summary { 
+  display: none; 
+  background: var(--color-background-secondary); 
+  border: 0.5px solid var(--color-border-tertiary); 
+  border-radius: 8px; 
+  padding: 1.25rem; 
+  margin-top: 1.5rem; 
+}
+
+.qs-summary.visible { 
+  display: block; 
+}
+
+.qs-summary pre { 
+  font-family: 'DM Mono', monospace; 
+  font-size: 12px; 
+  color: var(--color-text-primary); 
+  white-space: pre-wrap; 
+  word-break: break-word; 
+  line-height: 1.7; 
+}
+
+.copy-confirm { 
+  font-size: 12px; 
+  color: var(--color-text-secondary); 
+  font-family: 'DM Mono', monospace; 
+  margin-top: 0.5rem; 
+  opacity: 0; 
+  transition: opacity 0.3s; 
+}
+
+.copy-confirm.show { 
+  opacity: 1; 
+}
+
+/* Screen reader utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+</style>
+
+<div class="qs-root">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">VR playtester questionnaire for level design feedback</h2>
+
+  <div class="qs-header">
+    <div class="qs-badge">VR Playtester Feedback</div>
+    <div class="qs-title">Level Design Questionnaire</div>
+    <p class="qs-subtitle">Your feedback helps shape the experience. Answer as honestly as you can — there are no wrong answers. This should take about 8–10 minutes.</p>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  </div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">01 — General Info</div>
+    <div class="qs-question">
+      <label class="qs-label">What is your name or playtester ID? <span style="font-weight:400;color:var(--color-text-tertiary)">(optional)</span></label>
+      <input type="text" id="q-name" placeholder="e.g. Playtester #04, or leave blank">
+    </div>
+    <div class="qs-question">
+      <label class="qs-label">How much experience do you have with VR games?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="exp" id="exp1" value="First time in VR"><label for="exp1">First time in VR</label>
+        <input type="radio" name="exp" id="exp2" value="Tried VR a few times"><label for="exp2">Tried it a few times</label>
+        <input type="radio" name="exp" id="exp3" value="Play VR occasionally"><label for="exp3">Play VR occasionally</label>
+        <input type="radio" name="exp" id="exp4" value="Regular VR player"><label for="exp4">Regular VR player</label>
+      </div>
+    </div>
+    <div class="qs-question">
+      <label class="qs-label">Which headset did you use?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="headset" id="hs1" value="Meta Quest 2"><label for="hs1">Quest 2</label>
+        <input type="radio" name="headset" id="hs2" value="Meta Quest 3"><label for="hs2">Quest 3</label>
+        <input type="radio" name="headset" id="hs3" value="Meta Quest Pro"><label for="hs3">Quest Pro</label>
+        <input type="radio" name="headset" id="hs4" value="Valve Index"><label for="hs4">Valve Index</label>
+        <input type="radio" name="headset" id="hs5" value="PS VR2"><label for="hs5">PS VR2</label>
+        <input type="radio" name="headset" id="hs6" value="Other"><label for="hs6">Other</label>
+      </div>
+    </div>
+    <div class="qs-question">
+      <label class="qs-label">Which level/section did you playtest?</label>
+      <input type="text" id="q-level" placeholder="e.g. Act 1 — Playtesting Facility, or leave blank if full build">
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">02 — Comfort & Motion Sickness</div>
+    <div class="comfort-alert">If you felt sick at any point, please stop and take a break before filling this out.</div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did you experience any motion sickness or discomfort during the session?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="sickness" id="sk1" value="None at all"><label for="sk1">None at all</label>
+        <input type="radio" name="sickness" id="sk2" value="Mild — faded quickly"><label for="sk2">Mild, faded quickly</label>
+        <input type="radio" name="sickness" id="sk3" value="Noticeable — manageable"><label for="sk3">Noticeable, manageable</label>
+        <input type="radio" name="sickness" id="sk4" value="Strong — had to stop"><label for="sk4">Strong — had to stop</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">If you felt discomfort, when did it happen and what seemed to trigger it?</label>
+      <textarea id="q-sick-trigger" class="sm" placeholder="e.g. 'Smooth locomotion in the corridor', 'rotating to reach something', 'a specific visual effect'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">How did the locomotion (movement system) feel?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="loco" id="lc1" value="Very comfortable"><label for="lc1">Very comfortable</label>
+        <input type="radio" name="loco" id="lc2" value="Mostly comfortable"><label for="lc2">Mostly comfortable</label>
+        <input type="radio" name="loco" id="lc3" value="Somewhat uncomfortable"><label for="lc3">Somewhat uncomfortable</label>
+        <input type="radio" name="loco" id="lc4" value="Very uncomfortable"><label for="lc4">Very uncomfortable</label>
+        <input type="radio" name="loco" id="lc5" value="No locomotion used"><label for="lc5">No locomotion used</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did the physical scale of the world feel right? Did things feel too big, too small, or correct?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="scale" id="sc1" value="Too small"><label for="sc1">Too small</label>
+        <input type="radio" name="scale" id="sc2" value="Slightly small"><label for="sc2">Slightly small</label>
+        <input type="radio" name="scale" id="sc3" value="Felt right"><label for="sc3">Felt right</label>
+        <input type="radio" name="scale" id="sc4" value="Slightly large"><label for="sc4">Slightly large</label>
+        <input type="radio" name="scale" id="sc5" value="Too large"><label for="sc5">Too large</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did you ever feel physically cramped, like you were about to hit something in your real space?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="cramped" id="cr1" value="Never"><label for="cr1">Never</label>
+        <input type="radio" name="cramped" id="cr2" value="Once or twice"><label for="cr2">Once or twice</label>
+        <input type="radio" name="cramped" id="cr3" value="Often"><label for="cr3">Often</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">03 — Controllers & Interaction</div>
+
+    <div class="qs-question">
+      <label class="qs-label">How intuitive did the controller interactions feel overall?</label>
+      <div class="rating-group">
+        <label><input type="radio" name="controller" value="1"><span class="rb">1</span></label>
+        <label><input type="radio" name="controller" value="2"><span class="rb">2</span></label>
+        <label><input type="radio" name="controller" value="3"><span class="rb">3</span></label>
+        <label><input type="radio" name="controller" value="4"><span class="rb">4</span></label>
+        <label><input type="radio" name="controller" value="5"><span class="rb">5</span></label>
+      </div>
+      <div class="rating-labels"><span>Very confusing</span><span>Totally natural</span></div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Were there interactions that didn't respond the way you expected? Grabbing, pressing, throwing, etc.?</label>
+      <textarea id="q-interact-fail" class="sm" placeholder="e.g. 'Grabbing the arm felt floaty', 'couldn't figure out how to activate the panel'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did anything feel physically awkward to reach or interact with? (too high, too low, behind you, etc.)</label>
+      <textarea id="q-reach" class="sm" placeholder="e.g. 'The lever was too high, I had to stretch uncomfortably'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did button prompts or controller hints appear when you needed them?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="hints" id="hn1" value="Always clear"><label for="hn1">Always clear</label>
+        <input type="radio" name="hints" id="hn2" value="Mostly clear"><label for="hn2">Mostly clear</label>
+        <input type="radio" name="hints" id="hn3" value="Sometimes missing"><label for="hn3">Sometimes missing</label>
+        <input type="radio" name="hints" id="hn4" value="Rarely/never there"><label for="hn4">Rarely / never there</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">04 — Immersion & Presence</div>
+
+    <div class="qs-question">
+      <label class="qs-label">How present did you feel inside the world — like you were actually there?</label>
+      <div class="rating-group">
+        <label><input type="radio" name="presence" value="1"><span class="rb">1</span></label>
+        <label><input type="radio" name="presence" value="2"><span class="rb">2</span></label>
+        <label><input type="radio" name="presence" value="3"><span class="rb">3</span></label>
+        <label><input type="radio" name="presence" value="4"><span class="rb">4</span></label>
+        <label><input type="radio" name="presence" value="5"><span class="rb">5</span></label>
+      </div>
+      <div class="rating-labels"><span>Felt like a screen</span><span>Fully immersed</span></div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Was there anything that broke your sense of immersion? (visual glitches, sounds, weird object behaviour, UI that felt out of place)</label>
+      <textarea id="q-immersion-break" class="sm" placeholder="e.g. 'Floating objects', 'UI text too close to my face', 'hand clipped through the table'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did the audio (spatial sound, ambience, voice) help the sense of presence?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="audio" id="au1" value="Greatly helped"><label for="au1">Greatly helped</label>
+        <input type="radio" name="audio" id="au2" value="Somewhat helped"><label for="au2">Somewhat helped</label>
+        <input type="radio" name="audio" id="au3" value="Neutral"><label for="au3">Neutral</label>
+        <input type="radio" name="audio" id="au4" value="Slightly broke immersion"><label for="au4">Slightly broke it</label>
+        <input type="radio" name="audio" id="au5" value="Hurt immersion a lot"><label for="au5">Hurt it a lot</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Was there a moment where the VR made something hit harder emotionally or feel more intense than it would on a flat screen?</label>
+      <textarea id="q-vr-advantage" class="sm" placeholder="e.g. 'Being in the small room felt actually claustrophobic', 'the narrator voice felt like it was right next to me'"></textarea>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">05 — Navigation & Level Layout</div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did you ever feel lost or unsure where to go?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="lost" id="lost1" value="Never"><label for="lost1">Never</label>
+        <input type="radio" name="lost" id="lost2" value="Once or twice"><label for="lost2">Once or twice</label>
+        <input type="radio" name="lost" id="lost3" value="A few times"><label for="lost3">A few times</label>
+        <input type="radio" name="lost" id="lost4" value="Often"><label for="lost4">Often</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">If you got lost, describe where and what you were expecting to find.</label>
+      <textarea id="q-lost-detail" class="sm" placeholder="Being specific helps a lot here..."></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did the level use VR space well? Did it encourage you to physically look around, crouch, lean, or explore with your body?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="space-use" id="su1" value="Not really — felt flat"><label for="su1">Not really, felt flat</label>
+        <input type="radio" name="space-use" id="su2" value="A little"><label for="su2">A little</label>
+        <input type="radio" name="space-use" id="su3" value="Moderately"><label for="su3">Moderately</label>
+        <input type="radio" name="space-use" id="su4" value="Very well"><label for="su4">Very well</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">06 — Difficulty & Pacing</div>
+
+    <div class="qs-question">
+      <label class="qs-label">How did the overall difficulty feel?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="diff" id="diff1" value="Too easy"><label for="diff1">Too easy</label>
+        <input type="radio" name="diff" id="diff2" value="Slightly easy"><label for="diff2">Slightly easy</label>
+        <input type="radio" name="diff" id="diff3" value="Just right"><label for="diff3">Just right</label>
+        <input type="radio" name="diff" id="diff4" value="Slightly hard"><label for="diff4">Slightly hard</label>
+        <input type="radio" name="diff" id="diff5" value="Too hard"><label for="diff5">Too hard</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Were there specific moments that felt unfairly difficult or trivially easy?</label>
+      <textarea id="q-diff-detail" class="sm" placeholder="e.g. 'Couldn't figure out the puzzle — no clear feedback on what I was doing wrong'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did the pacing give you enough time to absorb the environment and story, or did it rush/drag?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="pace" id="pace1" value="Dragged a lot"><label for="pace1">Dragged a lot</label>
+        <input type="radio" name="pace" id="pace2" value="Slightly slow"><label for="pace2">Slightly slow</label>
+        <input type="radio" name="pace" id="pace3" value="Good pacing"><label for="pace3">Good pacing</label>
+        <input type="radio" name="pace" id="pace4" value="Slightly rushed"><label for="pace4">Slightly rushed</label>
+        <input type="radio" name="pace" id="pace5" value="Too rushed"><label for="pace5">Too rushed</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">07 — Puzzles & Mechanics</div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did you understand what you were supposed to do in each challenge area?</label>
+      <div class="rating-group">
+        <label><input type="radio" name="puzzle-clarity" value="1"><span class="rb">1</span></label>
+        <label><input type="radio" name="puzzle-clarity" value="2"><span class="rb">2</span></label>
+        <label><input type="radio" name="puzzle-clarity" value="3"><span class="rb">3</span></label>
+        <label><input type="radio" name="puzzle-clarity" value="4"><span class="rb">4</span></label>
+        <label><input type="radio" name="puzzle-clarity" value="5"><span class="rb">5</span></label>
+      </div>
+      <div class="rating-labels"><span>Completely lost</span><span>Crystal clear</span></div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did any mechanic feel especially suited to VR — like it only works because you're physically there?</label>
+      <textarea id="q-vr-mechanic" class="sm" placeholder="e.g. 'Having to physically look away from something', 'using both hands at once felt natural'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Was there a puzzle or interaction that felt frustrating specifically because of the VR controls (not the puzzle logic itself)?</label>
+      <textarea id="q-vr-friction" class="sm" placeholder="e.g. 'Picking up small objects was fiddly', 'had to aim with my whole arm instead of a cursor'"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Was there a moment that felt especially satisfying to solve or interact with?</label>
+      <textarea id="q-satisfying" class="sm" placeholder="Describe that moment..."></textarea>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">08 — Atmosphere & Feel</div>
+
+    <div class="qs-question">
+      <label class="qs-label">What emotions did the level evoke? Check all that apply.</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" class="emotion" value="Curious"> Curious</label>
+        <label><input type="checkbox" class="emotion" value="Tense"> Tense</label>
+        <label><input type="checkbox" class="emotion" value="Confused (bad way)"> Confused (bad way)</label>
+        <label><input type="checkbox" class="emotion" value="Intrigued"> Intrigued</label>
+        <label><input type="checkbox" class="emotion" value="Bored"> Bored</label>
+        <label><input type="checkbox" class="emotion" value="Anxious / Uneasy"> Anxious / Uneasy</label>
+        <label><input type="checkbox" class="emotion" value="Delighted"> Delighted</label>
+        <label><input type="checkbox" class="emotion" value="Frustrated"> Frustrated</label>
+        <label><input type="checkbox" class="emotion" value="Immersed"> Immersed</label>
+        <label><input type="checkbox" class="emotion" value="Excited"> Excited</label>
+        <label><input type="checkbox" class="emotion" value="Scared / Startled"> Scared / Startled</label>
+        <label><input type="checkbox" class="emotion" value="Unsettled"> Unsettled</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">09 — Bugs & Issues</div>
+
+    <div class="qs-question">
+      <label class="qs-label">Did you encounter any bugs, glitches, or unexpected behaviour?</label>
+      <div class="select-pill-group">
+        <input type="radio" name="bugs" id="bugs1" value="No bugs"><label for="bugs1">No bugs</label>
+        <input type="radio" name="bugs" id="bugs2" value="Minor glitch"><label for="bugs2">Minor glitch</label>
+        <input type="radio" name="bugs" id="bugs3" value="Several issues"><label for="bugs3">Several issues</label>
+        <input type="radio" name="bugs" id="bugs4" value="Crashed or broke"><label for="bugs4">Crashed or broke</label>
+      </div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Please describe any bugs — where they happened, what occurred, and how to reproduce if possible.</label>
+      <textarea id="q-bugs" placeholder="e.g. 'In the second room, grabbing the object caused it to teleport to the ceiling'"></textarea>
+    </div>
+  </div>
+
+  <div class="qs-divider"></div>
+
+  <div class="qs-section">
+    <div class="qs-section-title">10 — Final Thoughts</div>
+
+    <div class="qs-question">
+      <label class="qs-label">On a scale of 1–5, how much did you enjoy this level overall?</label>
+      <div class="rating-group">
+        <label><input type="radio" name="enjoy" value="1"><span class="rb">1</span></label>
+        <label><input type="radio" name="enjoy" value="2"><span class="rb">2</span></label>
+        <label><input type="radio" name="enjoy" value="3"><span class="rb">3</span></label>
+        <label><input type="radio" name="enjoy" value="4"><span class="rb">4</span></label>
+        <label><input type="radio" name="enjoy" value="5"><span class="rb">5</span></label>
+      </div>
+      <div class="rating-labels"><span>Did not enjoy</span><span>Loved it</span></div>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">What was the single biggest thing that could be improved?</label>
+      <textarea id="q-improve" placeholder="Be as specific as you can..."></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">What was your favourite part of the level?</label>
+      <textarea id="q-fave" class="sm" placeholder="Don't be shy — this helps too!"></textarea>
+    </div>
+
+    <div class="qs-question">
+      <label class="qs-label">Anything else — about the VR experience or otherwise — that wasn't covered above?</label>
+      <textarea id="q-extra" class="lg" placeholder="Free space — go wild."></textarea>
+    </div>
+  </div>
+
+  <div class="qs-actions">
+    <button class="btn-primary" onclick="compileFeedback()">Compile feedback ↓</button>
+    <button class="btn-secondary" onclick="clearForm()">Clear form</button>
+  </div>
+
+  <div class="qs-summary" id="summary">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+      <span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--color-text-secondary);letter-spacing:0.08em;text-transform:uppercase;">Compiled output</span>
+      <button class="btn-secondary" style="padding:5px 12px;font-size:12px;" onclick="copyFeedback()">Copy text</button>
+    </div>
+    <pre id="summaryText"></pre>
+    <p class="copy-confirm" id="copyConfirm">Copied to clipboard.</p>
+  </div>
+</div>
+
+<script>
+  function getVal(id) { const el = document.getElementById(id); return el ? el.value.trim() || '—' : '—'; }
+  function getRadio(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : '—'; }
+  function getCheckboxes(cls) { const checked = [...document.querySelectorAll(`.${cls}:checked`)].map(e => e.value); return checked.length ? checked.join(', ') : '—'; }
+
+  function compileFeedback() {
+    const lines = [
+      '╔════════════════════════════════════════╗',
+      '  VR PLAYTESTER FEEDBACK REPORT',
+      '╚════════════════════════════════════════╝',
+      '',
+      '── General Info ──────────────────────────',
+      `Name/ID         : ${getVal('q-name')}`,
+      `Level tested    : ${getVal('q-level')}`,
+      `VR experience   : ${getRadio('exp')}`,
+      `Headset         : ${getRadio('headset')}`,
+      '',
+      '── Comfort & Motion Sickness ─────────────',
+      `Motion sickness : ${getRadio('sickness')}`,
+      `Sick trigger    : ${getVal('q-sick-trigger')}`,
+      `Locomotion feel : ${getRadio('loco')}`,
+      `World scale     : ${getRadio('scale')}`,
+      `Felt cramped?   : ${getRadio('cramped')}`,
+      '',
+      '── Controllers & Interaction ─────────────',
+      `Controller feel : ${getRadio('controller')} / 5`,
+      `Bad interactions: ${getVal('q-interact-fail')}`,
+      `Awkward to reach: ${getVal('q-reach')}`,
+      `Button hints    : ${getRadio('hints')}`,
+      '',
+      '── Immersion & Presence ──────────────────',
+      `Presence rating : ${getRadio('presence')} / 5`,
+      `Broke immersion : ${getVal('q-immersion-break')}`,
+      `Audio helped?   : ${getRadio('audio')}`,
+      `VR advantage    : ${getVal('q-vr-advantage')}`,
+      '',
+      '── Navigation & Layout ───────────────────',
+      `Got lost?       : ${getRadio('lost')}`,
+      `Lost details    : ${getVal('q-lost-detail')}`,
+      `VR space use    : ${getRadio('space-use')}`,
+      '',
+      '── Difficulty & Pacing ───────────────────',
+      `Difficulty      : ${getRadio('diff')}`,
+      `Diff. details   : ${getVal('q-diff-detail')}`,
+      `Pacing          : ${getRadio('pace')}`,
+      '',
+      '── Puzzles & Mechanics ───────────────────',
+      `Puzzle clarity  : ${getRadio('puzzle-clarity')} / 5`,
+      `VR-native moment: ${getVal('q-vr-mechanic')}`,
+      `VR friction     : ${getVal('q-vr-friction')}`,
+      `Best moment     : ${getVal('q-satisfying')}`,
+      '',
+      '── Atmosphere & Feel ─────────────────────',
+      `Emotions felt   : ${getCheckboxes('emotion')}`,
+      '',
+      '── Bugs & Issues ─────────────────────────',
+      `Bug severity    : ${getRadio('bugs')}`,
+      `Bug details     : ${getVal('q-bugs')}`,
+      '',
+      '── Final Thoughts ────────────────────────',
+      `Enjoyment       : ${getRadio('enjoy')} / 5`,
+      `Biggest issue   : ${getVal('q-improve')}`,
+      `Favourite part  : ${getVal('q-fave')}`,
+      `Extra notes     : ${getVal('q-extra')}`,
+      '',
+      '──────────────────────────────────────────',
+      `Submitted       : ${new Date().toLocaleString()}`,
+    ];
+    document.getElementById('summaryText').textContent = lines.join('\n');
+    const s = document.getElementById('summary');
+    s.classList.add('visible');
+    s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateProgress();
+  }
+
+  function copyFeedback() {
+    const text = document.getElementById('summaryText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const c = document.getElementById('copyConfirm');
+      c.classList.add('show');
+      setTimeout(() => c.classList.remove('show'), 2500);
+    });
+  }
+
+  function clearForm() {
+    if (!confirm('Clear all answers?')) return;
+    document.querySelectorAll('textarea, input[type="text"]').forEach(e => e.value = '');
+    document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(e => e.checked = false);
+    document.getElementById('summary').classList.remove('visible');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const radios = ['exp','headset','sickness','loco','scale','cramped','controller','hints','presence','audio','lost','space-use','diff','pace','puzzle-clarity','bugs','enjoy'];
+    const answered = radios.filter(n => document.querySelector(`input[name="${n}"]:checked`)).length;
+    document.getElementById('progressBar').style.width = Math.round((answered / radios.length) * 100) + '%';
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener('change', updateProgress));
+</script>
