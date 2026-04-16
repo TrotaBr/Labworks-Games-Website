@@ -389,19 +389,19 @@ textarea.lg { min-height: 110px; }
 </style>
 
 <div class="qs-root">
-  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">VR playtester questionnaire for level design feedback</h2>
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Version Control Level Design Feedback</h2>
 
   <div class="qs-header">
     <div class="qs-badge">VR Playtester Feedback</div>
     <div class="qs-title">Level Design Questionnaire</div>
-    <p class="qs-subtitle">Your feedback helps shape the experience. Answer as honestly as you can — there are no wrong answers. This should take about 8–10 minutes.</p>
+    <p class="qs-subtitle">Your feedback helps shape the experience. Answer as honestly as you can. This should take about 8–10 minutes.</p>
     <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
   </div>
 
   <div class="qs-section">
     <div class="qs-section-title">01 — General Info</div>
     <div class="qs-question">
-      <label class="qs-label">What is your name or playtester ID? <span style="font-weight:400;color:var(--color-text-tertiary)">(optional)</span></label>
+      <label class="qs-label">What is your name? <span style="font-weight:400;color:var(--color-text-tertiary)">(optional)</span></label>
       <input type="text" id="q-name" placeholder="e.g. Playtester #04, or leave blank">
     </div>
     <div class="qs-question">
@@ -425,8 +425,8 @@ textarea.lg { min-height: 110px; }
       </div>
     </div>
     <div class="qs-question">
-      <label class="qs-label">Which level/section did you playtest?</label>
-      <input type="text" id="q-level" placeholder="e.g. Act 1 — Playtesting Facility, or leave blank if full build">
+      <label class="qs-label">Which level did you playtest?</label>
+      <input type="text" id="q-level" placeholder="leave blank if you don't know">
     </div>
   </div>
 
@@ -434,7 +434,6 @@ textarea.lg { min-height: 110px; }
 
   <div class="qs-section">
     <div class="qs-section-title">02 — Comfort & Motion Sickness</div>
-    <div class="comfort-alert">If you felt sick at any point, please stop and take a break before filling this out.</div>
 
     <div class="qs-question">
       <label class="qs-label">Did you experience any motion sickness or discomfort during the session?</label>
@@ -442,23 +441,22 @@ textarea.lg { min-height: 110px; }
         <input type="radio" name="sickness" id="sk1" value="None at all"><label for="sk1">None at all</label>
         <input type="radio" name="sickness" id="sk2" value="Mild — faded quickly"><label for="sk2">Mild, faded quickly</label>
         <input type="radio" name="sickness" id="sk3" value="Noticeable — manageable"><label for="sk3">Noticeable, manageable</label>
-        <input type="radio" name="sickness" id="sk4" value="Strong — had to stop"><label for="sk4">Strong — had to stop</label>
+        <input type="radio" name="sickness" id="sk4" value="Strong — had to stop"><label for="sk4">Strong, had to stop</label>
       </div>
     </div>
 
     <div class="qs-question">
       <label class="qs-label">If you felt discomfort, when did it happen and what seemed to trigger it?</label>
-      <textarea id="q-sick-trigger" class="sm" placeholder="e.g. 'Smooth locomotion in the corridor', 'rotating to reach something', 'a specific visual effect'"></textarea>
+      <textarea id="q-sick-trigger" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">How did the locomotion (movement system) feel?</label>
+      <label class="qs-label">How did the locomotion feel?</label>
       <div class="select-pill-group">
         <input type="radio" name="loco" id="lc1" value="Very comfortable"><label for="lc1">Very comfortable</label>
         <input type="radio" name="loco" id="lc2" value="Mostly comfortable"><label for="lc2">Mostly comfortable</label>
         <input type="radio" name="loco" id="lc3" value="Somewhat uncomfortable"><label for="lc3">Somewhat uncomfortable</label>
         <input type="radio" name="loco" id="lc4" value="Very uncomfortable"><label for="lc4">Very uncomfortable</label>
-        <input type="radio" name="loco" id="lc5" value="No locomotion used"><label for="lc5">No locomotion used</label>
       </div>
     </div>
 
@@ -470,15 +468,6 @@ textarea.lg { min-height: 110px; }
         <input type="radio" name="scale" id="sc3" value="Felt right"><label for="sc3">Felt right</label>
         <input type="radio" name="scale" id="sc4" value="Slightly large"><label for="sc4">Slightly large</label>
         <input type="radio" name="scale" id="sc5" value="Too large"><label for="sc5">Too large</label>
-      </div>
-    </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Did you ever feel physically cramped, like you were about to hit something in your real space?</label>
-      <div class="select-pill-group">
-        <input type="radio" name="cramped" id="cr1" value="Never"><label for="cr1">Never</label>
-        <input type="radio" name="cramped" id="cr2" value="Once or twice"><label for="cr2">Once or twice</label>
-        <input type="radio" name="cramped" id="cr3" value="Often"><label for="cr3">Often</label>
       </div>
     </div>
   </div>
@@ -501,25 +490,9 @@ textarea.lg { min-height: 110px; }
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Were there interactions that didn't respond the way you expected? Grabbing, pressing, throwing, etc.?</label>
-      <textarea id="q-interact-fail" class="sm" placeholder="e.g. 'Grabbing the arm felt floaty', 'couldn't figure out how to activate the panel'"></textarea>
+      <label class="qs-label">Were there interactions that didn't respond the way you expected? Grabbing, pressing, throwing, etc?</label>
+      <textarea id="q-interact-fail" class="sm" placeholder="e.g. 'Grabbing the cube felt weird', 'couldn't figure out how to activate that one button'"></textarea>
     </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Did anything feel physically awkward to reach or interact with? (too high, too low, behind you, etc.)</label>
-      <textarea id="q-reach" class="sm" placeholder="e.g. 'The lever was too high, I had to stretch uncomfortably'"></textarea>
-    </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Did button prompts or controller hints appear when you needed them?</label>
-      <div class="select-pill-group">
-        <input type="radio" name="hints" id="hn1" value="Always clear"><label for="hn1">Always clear</label>
-        <input type="radio" name="hints" id="hn2" value="Mostly clear"><label for="hn2">Mostly clear</label>
-        <input type="radio" name="hints" id="hn3" value="Sometimes missing"><label for="hn3">Sometimes missing</label>
-        <input type="radio" name="hints" id="hn4" value="Rarely/never there"><label for="hn4">Rarely / never there</label>
-      </div>
-    </div>
-  </div>
 
   <div class="qs-divider"></div>
 
@@ -527,24 +500,12 @@ textarea.lg { min-height: 110px; }
     <div class="qs-section-title">04 — Immersion & Presence</div>
 
     <div class="qs-question">
-      <label class="qs-label">How present did you feel inside the world — like you were actually there?</label>
-      <div class="rating-group">
-        <label><input type="radio" name="presence" value="1"><span class="rb">1</span></label>
-        <label><input type="radio" name="presence" value="2"><span class="rb">2</span></label>
-        <label><input type="radio" name="presence" value="3"><span class="rb">3</span></label>
-        <label><input type="radio" name="presence" value="4"><span class="rb">4</span></label>
-        <label><input type="radio" name="presence" value="5"><span class="rb">5</span></label>
-      </div>
-      <div class="rating-labels"><span>Felt like a screen</span><span>Fully immersed</span></div>
+      <label class="qs-label">Was there anything that broke your sense of immersion? (visual glitches, sounds, weird object behaviour, out of place stuff)</label>
+      <textarea id="q-immersion-break" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Was there anything that broke your sense of immersion? (visual glitches, sounds, weird object behaviour, UI that felt out of place)</label>
-      <textarea id="q-immersion-break" class="sm" placeholder="e.g. 'Floating objects', 'UI text too close to my face', 'hand clipped through the table'"></textarea>
-    </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Did the audio (spatial sound, ambience, voice) help the sense of presence?</label>
+      <label class="qs-label">Did the audio help the sense of presence? How was the audio quality on the playtested section overall?</label>
       <div class="select-pill-group">
         <input type="radio" name="audio" id="au1" value="Greatly helped"><label for="au1">Greatly helped</label>
         <input type="radio" name="audio" id="au2" value="Somewhat helped"><label for="au2">Somewhat helped</label>
@@ -552,11 +513,6 @@ textarea.lg { min-height: 110px; }
         <input type="radio" name="audio" id="au4" value="Slightly broke immersion"><label for="au4">Slightly broke it</label>
         <input type="radio" name="audio" id="au5" value="Hurt immersion a lot"><label for="au5">Hurt it a lot</label>
       </div>
-    </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Was there a moment where the VR made something hit harder emotionally or feel more intense than it would on a flat screen?</label>
-      <textarea id="q-vr-advantage" class="sm" placeholder="e.g. 'Being in the small room felt actually claustrophobic', 'the narrator voice felt like it was right next to me'"></textarea>
     </div>
   </div>
 
@@ -581,7 +537,7 @@ textarea.lg { min-height: 110px; }
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Did the level use VR space well? Did it encourage you to physically look around, crouch, lean, or explore with your body?</label>
+      <label class="qs-label">Did the level use VR meddium well? Did it encourage you to physically look around, crouch, lean, or interacting with the world?</label>
       <div class="select-pill-group">
         <input type="radio" name="space-use" id="su1" value="Not really — felt flat"><label for="su1">Not really, felt flat</label>
         <input type="radio" name="space-use" id="su2" value="A little"><label for="su2">A little</label>
@@ -609,7 +565,7 @@ textarea.lg { min-height: 110px; }
 
     <div class="qs-question">
       <label class="qs-label">Were there specific moments that felt unfairly difficult or trivially easy?</label>
-      <textarea id="q-diff-detail" class="sm" placeholder="e.g. 'Couldn't figure out the puzzle — no clear feedback on what I was doing wrong'"></textarea>
+      <textarea id="q-diff-detail" class="sm" placeholder="e.g. 'Couldn't figure out the puzzle, no clear feedback on what I was doing wrong'"></textarea>
     </div>
 
     <div class="qs-question">
@@ -642,13 +598,13 @@ textarea.lg { min-height: 110px; }
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Did any mechanic feel especially suited to VR — like it only works because you're physically there?</label>
-      <textarea id="q-vr-mechanic" class="sm" placeholder="e.g. 'Having to physically look away from something', 'using both hands at once felt natural'"></textarea>
+      <label class="qs-label">Did any mechanic feel especially suited to VR, like it only works because you're physically there?</label>
+      <textarea id="q-vr-mechanic" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
       <label class="qs-label">Was there a puzzle or interaction that felt frustrating specifically because of the VR controls (not the puzzle logic itself)?</label>
-      <textarea id="q-vr-friction" class="sm" placeholder="e.g. 'Picking up small objects was fiddly', 'had to aim with my whole arm instead of a cursor'"></textarea>
+      <textarea id="q-vr-friction" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
@@ -697,7 +653,7 @@ textarea.lg { min-height: 110px; }
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Please describe any bugs — where they happened, what occurred, and how to reproduce if possible.</label>
+      <label class="qs-label">Please describe any bugs, where they happened, what occurred, and how to reproduce if possible.</label>
       <textarea id="q-bugs" placeholder="e.g. 'In the second room, grabbing the object caused it to teleport to the ceiling'"></textarea>
     </div>
   </div>
@@ -726,12 +682,12 @@ textarea.lg { min-height: 110px; }
 
     <div class="qs-question">
       <label class="qs-label">What was your favourite part of the level?</label>
-      <textarea id="q-fave" class="sm" placeholder="Don't be shy — this helps too!"></textarea>
+      <textarea id="q-fave" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
-      <label class="qs-label">Anything else — about the VR experience or otherwise — that wasn't covered above?</label>
-      <textarea id="q-extra" class="lg" placeholder="Free space — go wild."></textarea>
+      <label class="qs-label">Anything else, about the VR experience or otherwise, that wasn't covered above?</label>
+      <textarea id="q-extra" class="lg" placeholder="Free space, go wild."></textarea>
     </div>
   </div>
 
@@ -758,8 +714,10 @@ textarea.lg { min-height: 110px; }
   function compileFeedback() {
     const lines = [
       '╔════════════════════════════════════════╗',
-      '  VR PLAYTESTER FEEDBACK REPORT',
+      'VERSION CONTROL PLAYTESTER FEEDBACK REPORT',
       '╚════════════════════════════════════════╝',
+      '',
+      'Paste this in the Version Control Channel on the discord server',
       '',
       '── General Info ──────────────────────────',
       `Name/ID         : ${getVal('q-name')}`,
