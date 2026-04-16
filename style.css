@@ -197,6 +197,20 @@ iframe {
     cursor: pointer;
 }
 
+.watermark {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 9999;
+  text-transform: uppercase;
+}
+
 
 .wishlist-btn {
     height: 50px;
