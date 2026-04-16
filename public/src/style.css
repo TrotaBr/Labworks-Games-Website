@@ -23,7 +23,23 @@ canvas {
     z-index: 1;
 } 
 
-
+.watermark {
+  position: fixed !important; /* Forces fixed behavior */
+  bottom: 15px;
+  right: 15px;
+  font-family: 'DM Mono', 'Segoe UI', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  
+  /* Using your specific theme variable or white if it's missing */
+  color: var(--text-dim, #ffffff); 
+  
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 99999; /* Higher than your Nav (1000) and Toggle (9999) */
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 #loading-screen {
     position: fixed;
