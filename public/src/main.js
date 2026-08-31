@@ -39,7 +39,7 @@ const TEAM_MEMBERS = [
     { name: "Evro", role: "Technical Developer", desc: "Technical Developer specializing in the inner workings for Labworks Games. He has played a key role in the Labworks mod and the development of both Version Control projects.", img: "/images/team/evro.jpg" },
     { name: "Garebeu", role: "Lead Art Director", desc: "Art Director, 3D Modeler, and responsible on the story Version Control (The Game) and Version Control (The Mod). Also made this website 👍", img: "/images/team/Garebeu.png" },
     { name: "Jerbinstein", role: "Level Designer", desc: "Level Designer and Narrative Developer for Version Control (The Game), and was the original voice behind the Developer in the first Version Control mod.", img: "/images/team/jerb.jpg" },
-    { name: "SegaTitan", role: "Voice Actor", desc: "The primary voice actor for the Version Control game, bringing the Developer character to life for this standalone experience.", img: "/images/team/segatitan.gif" },
+    { name: "SegaTitan", role: "Voice Actor", desc: "The primary voice actor for the Version Control game, bringing the Developer character to life for this standalone experience.", img: "/images/team/frank.png" },
     { name: "KadenZombie8", role: "Composer", desc: "Composer and Developer who created the BIMOS Interaction System. Currently crafting the original soundtrack for Version Control.", img: "/images/team/Pooey.png" },
     { name: "Zaxoosh", role: "Community Manager", desc: "Community Manager and Developer who helped manage the Labworks community after its release.", img: "/images/team/zax.jpg" }
 ];
