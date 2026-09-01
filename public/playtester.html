@@ -1,4 +1,3 @@
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700&display=swap');
 
@@ -693,7 +692,7 @@ textarea.lg { min-height: 110px; }
   function getCheckboxes(cls) { const checked = [...document.querySelectorAll(`.${cls}:checked`)].map(e => e.value); return checked.length ? checked.join(', ') : '—'; }
 
   function compileFeedback() {
-    cons',
+    const lines = [
       'VERSION CONTROL PLAYTESTER FEEDBACK REPORT',
       '',
       '',
@@ -710,19 +709,13 @@ textarea.lg { min-height: 110px; }
       `Sick trigger    : ${getVal('q-sick-trigger')}`,
       `Locomotion feel : ${getRadio('loco')}`,
       `World scale     : ${getRadio('scale')}`,
-      `Felt cramped?   : ${getRadio('cramped')}`,
       '',
       '── Controllers & Interaction ─────────────',
-      `Controller feel : ${getRadio('controller')} / 5`,
       `Bad interactions: ${getVal('q-interact-fail')}`,
-      `Awkward to reach: ${getVal('q-reach')}`,
-      `Button hints    : ${getRadio('hints')}`,
       '',
       '── Immersion & Presence ──────────────────',
-      `Presence rating : ${getRadio('presence')} / 5`,
       `Broke immersion : ${getVal('q-immersion-break')}`,
       `Audio helped?   : ${getRadio('audio')}`,
-      `VR advantage    : ${getVal('q-vr-advantage')}`,
       '',
       '── Navigation & Layout ───────────────────',
       `Got lost?       : ${getRadio('lost')}`,
@@ -736,7 +729,6 @@ textarea.lg { min-height: 110px; }
       '',
       '── Puzzles & Mechanics ───────────────────',
       `Puzzle clarity  : ${getRadio('puzzle-clarity')} / 5`,
-      `VR-native moment: ${getVal('q-vr-mechanic')}`,
       `VR friction     : ${getVal('q-vr-friction')}`,
       `Best moment     : ${getVal('q-satisfying')}`,
       '',
@@ -781,7 +773,7 @@ textarea.lg { min-height: 110px; }
   }
 
   function updateProgress() {
-    const radios = ['exp','headset','sickness','loco','scale','cramped','controller','hints','presence','audio','lost','space-use','diff','pace','puzzle-clarity','bugs','enjoy'];
+    const radios = ['exp','headset','sickness','loco','scale','audio','lost','space-use','diff','pace','puzzle-clarity','bugs','enjoy'];
     const answered = radios.filter(n => document.querySelector(`input[name="${n}"]:checked`)).length;
     document.getElementById('progressBar').style.width = Math.round((answered / radios.length) * 100) + '%';
   }
