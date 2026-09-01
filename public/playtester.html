@@ -405,12 +405,10 @@ textarea.lg { min-height: 110px; }
       <input type="text" id="q-name" placeholder="">
     </div>
     <div class="qs-question">
-      <label class="qs-label">How much experience do you have with VR games?</label>
+      <label class="qs-label">What is your level of VR experience?</label>
       <div class="select-pill-group">
-        <input type="radio" name="exp" id="exp1" value="First time in VR"><label for="exp1">First time in VR</label>
-        <input type="radio" name="exp" id="exp2" value="Tried VR a few times"><label for="exp2">Tried it a few times</label>
-        <input type="radio" name="exp" id="exp3" value="Play VR occasionally"><label for="exp3">Play VR occasionally</label>
-        <input type="radio" name="exp" id="exp4" value="Regular VR player"><label for="exp4">Regular VR player</label>
+        <input type="radio" name="exp" id="exp3" value="Play VR occasionally"><label for="exp3">VR Noob (play a little)</label>
+        <input type="radio" name="exp" id="exp4" value="Regular VR player"><label for="exp4">VR Pro (play a lot)</label>
       </div>
     </div>
     <div class="qs-question">
@@ -478,20 +476,8 @@ textarea.lg { min-height: 110px; }
     <div class="qs-section-title">03 — Controllers & Interaction</div>
 
     <div class="qs-question">
-      <label class="qs-label">How intuitive did the controller interactions feel overall?</label>
-      <div class="rating-group">
-        <label><input type="radio" name="controller" value="1"><span class="rb">1</span></label>
-        <label><input type="radio" name="controller" value="2"><span class="rb">2</span></label>
-        <label><input type="radio" name="controller" value="3"><span class="rb">3</span></label>
-        <label><input type="radio" name="controller" value="4"><span class="rb">4</span></label>
-        <label><input type="radio" name="controller" value="5"><span class="rb">5</span></label>
-      </div>
-      <div class="rating-labels"><span>Very confusing</span><span>Totally natural</span></div>
-    </div>
-
-    <div class="qs-question">
       <label class="qs-label">Were there interactions that didn't respond the way you expected? Grabbing, pressing, throwing, etc?</label>
-      <textarea id="q-interact-fail" class="sm" placeholder="e.g. 'Grabbing the cube felt weird', 'couldn't figure out how to activate that one button'"></textarea>
+      <textarea id="q-interact-fail" class="sm" placeholder=""></textarea>
     </div>
 
   <div class="qs-divider"></div>
@@ -565,7 +551,7 @@ textarea.lg { min-height: 110px; }
 
     <div class="qs-question">
       <label class="qs-label">Were there specific moments that felt unfairly difficult or trivially easy?</label>
-      <textarea id="q-diff-detail" class="sm" placeholder="e.g. 'Couldn't figure out the puzzle, no clear feedback on what I was doing wrong'"></textarea>
+      <textarea id="q-diff-detail" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
@@ -595,11 +581,6 @@ textarea.lg { min-height: 110px; }
         <label><input type="radio" name="puzzle-clarity" value="5"><span class="rb">5</span></label>
       </div>
       <div class="rating-labels"><span>Completely lost</span><span>Crystal clear</span></div>
-    </div>
-
-    <div class="qs-question">
-      <label class="qs-label">Did any mechanic feel especially suited to VR, like it only works because you're physically there?</label>
-      <textarea id="q-vr-mechanic" class="sm" placeholder=""></textarea>
     </div>
 
     <div class="qs-question">
@@ -654,7 +635,7 @@ textarea.lg { min-height: 110px; }
 
     <div class="qs-question">
       <label class="qs-label">Please describe any bugs, where they happened, what occurred, and how to reproduce if possible.</label>
-      <textarea id="q-bugs" placeholder="e.g. 'In the second room, grabbing the object caused it to teleport to the ceiling'"></textarea>
+      <textarea id="q-bugs" placeholder=""></textarea>
     </div>
   </div>
 
@@ -712,15 +693,14 @@ textarea.lg { min-height: 110px; }
   function getCheckboxes(cls) { const checked = [...document.querySelectorAll(`.${cls}:checked`)].map(e => e.value); return checked.length ? checked.join(', ') : '—'; }
 
   function compileFeedback() {
-    const lines = [
-      '╔════════════════════════════════════════╗',
+    cons',
       'VERSION CONTROL PLAYTESTER FEEDBACK REPORT',
-      '╚════════════════════════════════════════╝',
+      '',
       '',
       'Paste this in the Version Control Channel on the discord server',
       '',
       '── General Info ──────────────────────────',
-      `Name/ID         : ${getVal('q-name')}`,
+      `Name         : ${getVal('q-name')}`,
       `Level tested    : ${getVal('q-level')}`,
       `VR experience   : ${getRadio('exp')}`,
       `Headset         : ${getRadio('headset')}`,
